@@ -1,0 +1,90 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Coverage reports
+.coverage
+.coverage.*
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Docker
+Dockerfile
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+test-results/
+playwright-report/
+
+# Build artifacts
+docker-compose.override.yml
+
+# Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.eslintcache
+
+# Temporary files
+tmp/
+temp/
+
+# UV lock file
+uv.lock
+
+# Claude config (sensitive)
+.claude/settings.local.json

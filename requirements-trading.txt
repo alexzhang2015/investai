@@ -1,0 +1,36 @@
+# 交易相关依赖
+# Trading Dependencies
+
+aiohttp>=3.8.0  # 异步HTTP客户端
+asyncio>=3.4.0  # 异步IO支持
+python-dateutil>=2.8.0  # 日期时间处理
+pytz>=2020.0  # 时区支持
+
+# 富途官方SDK (如果可用)
+# futu-api>=1.0.0
+
+# 数据序列化
+msgpack>=1.0.0  # 高效数据序列化
+protobuf>=3.20.0  # Protocol Buffers支持
+
+# 日志记录
+structlog>=21.1.0  # 结构化日志
+
+# 配置管理
+python-dotenv>=0.19.0  # 环境变量管理
+
+# 测试相关
+pytest>=6.0.0  # 测试框架
+pytest-asyncio>=0.16.0  # 异步测试支持
+pytest-cov>=3.0.0  # 测试覆盖率
+
+# 开发工具
+black>=22.0.0  # 代码格式化
+isort>=5.10.0  # import排序
+mypy>=0.910  # 类型检查
+
+# 监控相关
+prometheus-client>=0.14.0  # Prometheus监控
+
+# 可选: 如果需要WebSocket支持
+websockets>=10.0  # WebSocket客户端

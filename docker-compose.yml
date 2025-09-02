@@ -1,0 +1,69 @@
+services:
+  # 主应用服务
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/investai
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-production-secret-key-change-this
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    command: python run.py
+    restart: unless-stopped
+
+  # PostgreSQL数据库
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: investai
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # 时序数据库 (可选)
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    restart: unless-stopped
+
+  # 消息队列 (可选)
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  clickhouse_data:
+  rabbitmq_data:
